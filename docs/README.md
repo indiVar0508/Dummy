@@ -1,3 +1,3 @@
 ## API Documentation
 
-::: dummy.main
+::: indi_dummy.main

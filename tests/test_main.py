@@ -3,7 +3,7 @@ import random
 
 random.seed(20)
 
-from dummy.main import greet, depart
+from indi_dummy.main import greet, depart
 
 
 class TestSimple(unittest.TestCase):

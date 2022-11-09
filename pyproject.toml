@@ -19,7 +19,7 @@ classifiers=[
 dynamic = ["version", "dependencies"]
 
 [tool.setuptools.dynamic]
-version = {attr = "dummy.__version__"}
+version = {attr = "indi_dummy.__version__"}
 dependencies = {file = ["requirements/pkg.txt"]}
 
 [project.optional-dependencies]
