@@ -1,0 +1,17 @@
+site_name: Dummy Project
+site_url: https://indiVar0508.github.io/Dummy
+site_author: Indivar
+
+# Repository
+repo_name: Dummy
+repo_url: https://github.com/indiVar0508/Dummy
+edit_uri: edit/master/docs
+docs_dir: docs
+
+plugins:
+    - awesome-pages
+    - search
+    - mkdocstrings
+  
+theme:
+  name: readthedocs
