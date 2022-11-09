@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: 3.x
       - name: Install Dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements/docs.txt
       - name: Build Site
         run: mkdocs build
       - name: deploy site
