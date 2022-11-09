@@ -3,4 +3,4 @@
 
 __version__ = '0.0.1.rc1'
 
-from dummy.main import greet, depart
+from indi_dummy.main import greet, depart
