@@ -15,16 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python: [3.8]
-
+        python-version: [3.6, 3.8]
+        db-engine: ['sqlite', 'mysql', 'postgres']
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v2
+      - uses: Dummy/run_test@v1
         with:
-          python-version: ${{ matrix.python }}
-      - name: Install Tox and any other packages
-        run: pip install .[test]
-      - name: Run Tox
-        # Run tox using the version of Python in `PATH`
-        run: tox -e py
+          python-version: ${{ matrix.python-version }}
+          db-engine: ${{ matrix.db-engine }}
