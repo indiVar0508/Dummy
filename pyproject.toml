@@ -1,14 +1,11 @@
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
 
-[project]
+[tool.poetry]
 name = "indi_dummy"
 description = "This is a Dummy Project"
-requires-python = ">=3.6.0"
-authors = [
-    { name = "Indivar Mishra", email = "abc@example.com" }
-]
+authors = ["Indivar Mishra <abc@example.com>"]
 classifiers=[
     "Environment :: Web Environment",
     "Intended Audience :: Developers",
@@ -16,11 +13,7 @@ classifiers=[
     "Programming Language :: Python",
     "Programming Language :: Python :: 3"
 ]
-dynamic = ["version", "dependencies"]
-
-[tool.setuptools.dynamic]
-version = {attr = "indi_dummy.__version__"}
-dependencies = {file = ["requirements/pkg.txt"]}
+version = "0.0.1"
 
 [project.optional-dependencies]
 docs = ["mkdocs==1.4.2", "mkdocs-awesome-pages-plugin==2.8.0", "mkdocs-material==8.5.9", "mkdocstrings-python==0.7.1"]
