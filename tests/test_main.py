@@ -1,18 +1,12 @@
-import unittest
-import random
+import pytest
 
-random.seed(20)
-
-from indi_dummy.main import greet, depart
+from indi_dummy.main import depart, greet
 
 
-class TestSimple(unittest.TestCase):
+@pytest.mark.parametrize("name", ["a", "b"])
+def test_greet(name):
+    assert greet(name) is None
 
-    def test_greet(self):
-        self.assertEqual(greet("indi"), None)
-
-    def test_depart(self):
-        self.assertEqual(depart("indi"), None)
-
-if __name__ == '__main__':
-    unittest.main()
+@pytest.mark.parametrize("name", ["a", "b"])
+def test_depart(name):
+    assert depart(name) is None
