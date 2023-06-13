@@ -1,8 +1,8 @@
 """The package is demo package to do a PoC and learn various functionalities provided in Github.
 """
 
-import os
 import random
+
 
 def greet(name):
     """The method greets you with your name with random probability
