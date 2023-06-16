@@ -1,13 +1,9 @@
 name: Test
 
 on:
-  push:
-    branches:
-      - main
-      - master
+  workflow_dispatch:
   pull_request:
     branches:
-      - main
       - master
 
 jobs:
@@ -25,6 +21,23 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Install Tox and any other packages
         run: pip install .[test]
-      - name: Run Tox
-        # Run tox using the version of Python in `PATH`
-        run: tox -e py
+      - name: manually triggered tests
+        if: |
+          github.event_name == 'workflow_dispatch'
+        run: PYTHONPATH='.' coverage run --data-file=saved_coverage/indi_dummy/.coverage --branch -m pytest tests/
+      - uses: actions/upload-artifact@v3
+        if: |
+          github.event_name == 'workflow_dispatch'
+        with:
+          name: coverage
+          path: saved_coverage/indi_dummy/.coverage
+          if-no-files-found: error
+      - uses: actions/download-artifact@v3
+        if: |
+          github.event_name != 'workflow_dispatch'
+        with:
+          name: coverage
+      - name: Execute partial tests
+        if: |
+          github.event_name != 'workflow_dispatch'
+        run: partialtest --coverage-dir saved_coverage --project-name indi_dummy --compare-to-branch master
