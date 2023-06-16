@@ -32,11 +32,14 @@ jobs:
           name: coverage
           path: saved_coverage/indi_dummy/.coverage
           if-no-files-found: error
-      - uses: actions/download-artifact@v3
+      - uses: dawidd6/action-download-artifact@v2
         if: |
           github.event_name != 'workflow_dispatch'
         with:
+          branch: master
           name: coverage
+          path: saved_coverage/indi_dummy/
+          if_no_artifact_found: fail
       - name: Execute partial tests
         if: |
           github.event_name != 'workflow_dispatch'
