@@ -15,6 +15,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: "0"
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
@@ -43,4 +45,5 @@ jobs:
       - name: Execute partial tests
         if: |
           github.event_name != 'workflow_dispatch'
-        run: partialtest --coverage-dir saved_coverage --project-name indi_dummy --compare-to-branch master
+        run: |
+          partialtest --coverage-dir saved_coverage --project-name indi_dummy --compare-to-branch origin/master
