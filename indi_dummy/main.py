@@ -18,7 +18,7 @@ def greet(name):
         Greeting message
     """
     chance = random.random()
-    print(f"Hi, {name}" if chance < 0.5 else f"Hola, {name}" if (chance > 0.5) and (chance < 0.8) else f"Bojour, {name}")
+    print(f"Hi, {name}" if chance < 0.6 else f"Hola, {name}" if (chance > 0.5) and (chance < 0.8) else f"Bojour, {name}")
 
 
 def depart(name):
