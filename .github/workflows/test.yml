@@ -46,4 +46,4 @@ jobs:
         if: |
           github.event_name != 'workflow_dispatch'
         run: |
-          partialtest --coverage-dir saved_coverage --project-name indi_dummy --compare-to-branch origin/master
+          partialtest --coverage-dir saved_coverage --project-name indi_dummy --compare-to-branch origin/master --git-diff-use-head --line-coverage
