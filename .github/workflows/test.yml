@@ -27,28 +27,6 @@ jobs:
       - name: Install Tox and any other packages
         run: pip install .[test]
       - name: manually triggered tests
-        if: |
-          (github.event_name == 'workflow_dispatch' || github.event_name == 'push')
-        run: PYTHONPATH='.' coverage run --data-file=saved_coverage/indi_dummy/.coverage --branch -m pytest tests/
-      - uses: actions/upload-artifact@v3
-        if: |
-          github.event_name == 'workflow_dispatch' || github.event_name == 'push'
-        with:
-          name: coverage
-          path: saved_coverage/indi_dummy/.coverage
-          if-no-files-found: error
-      - uses: dawidd6/action-download-artifact@v2
-        if: |
-          github.event_name == 'pull_request'
-        with:
-          branch: master
-          name: coverage
-          path: saved_coverage/indi_dummy/
-          if_no_artifact_found: fail
-      - name: Execute partial tests
-        if: |
-          github.event_name == 'pull_request'
-        run: |
-          partialtest --coverage-dir saved_coverage --project-name indi_dummy --compare-to-branch origin/master
-          a=`cat test_files_to_run.txt`
-          pytest -k $a tests/
+        run: pytest tests/ --cov=indi_dummy --cov-report=lcov
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
