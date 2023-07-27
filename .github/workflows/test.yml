@@ -28,13 +28,11 @@ jobs:
         run: pip install .[test]
       - name: manually triggered tests
         run: |
-          pytest tests/ --cov=indi_dummy --cov-report lcov
-          coverage xml -o coverage.xml
+          pytest tests/ --cov=indi_dummy --cov-report=lcov
       - name: Coveralls
         env:
           github-token: ${{ secrets.GITHUB_TOKEN }}
         uses: coverallsapp/github-action@master
         with:
           debug: true
-          file: coverage.xml
           path-to-lcov: ./coverage.lcov
