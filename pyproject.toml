@@ -24,5 +24,8 @@ dependencies = {file = ["requirements/pkg.txt"]}
 
 [project.optional-dependencies]
 docs = ["mkdocs==1.4.2", "mkdocs-awesome-pages-plugin==2.8.0", "mkdocs-material==8.5.9", "mkdocstrings-python==0.7.1"]
-test = ["pylint", "pytest", "tox", "partialtesting", "coverage", "pytest-cov"]
+test = ["pylint", "pytest", "tox", "partialtesting", "coverage", "pytest-cov", "coveralls"]
 release = ["twine", "wheel"]
+
+[tool.coverage.run]
+relative_files = true
