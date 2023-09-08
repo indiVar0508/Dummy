@@ -16,3 +16,7 @@ def sub_two_numbers(a, b):
 
 def mul_two_numbers(a, b):
     return a * b
+
+
+def div_two_numbers(a, b):
+    return a / b
