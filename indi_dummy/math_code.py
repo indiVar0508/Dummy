@@ -25,3 +25,8 @@ def div_two_numbers(a, b):
 
 def pow_two_numbers(a, b):
     return a ** b
+
+
+
+def sq_number(a):
+    return a ** 2
