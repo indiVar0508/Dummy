@@ -20,3 +20,8 @@ def mul_two_numbers(a, b):
 
 def div_two_numbers(a, b):
     return a / b
+
+
+
+def pow_two_numbers(a, b):
+    return a ** b
