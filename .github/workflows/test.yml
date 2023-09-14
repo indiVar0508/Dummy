@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         python: [3.8]
+        test_files: ["tests/test_main.py", "tests/test_math_code.py"]
 
     steps:
       - uses: actions/checkout@v2
@@ -25,7 +26,7 @@ jobs:
         run: pip install .[test]
       - name: manually triggered tests
         run: |
-          pytest tests/ --cov=indi_dummy --cov-report=lcov
+          pytest ${{ matrix.test_files }} --cov=indi_dummy --cov-report=lcov
       - name: Coveralls
         env:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -33,3 +34,16 @@ jobs:
         with:
           debug: true
           path-to-lcov: ./coverage.lcov
+          flag-name: lcov-${{ matrix.python }}-py${{ matrix.test_files }}
+          parallel: true
+
+  generate-coverage-report:
+    runs-on: ubuntu-20.04
+    needs: [build]
+    steps:
+      - name: Coveralls
+        env:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        uses: coverallsapp/github-action@master
+        with:
+          parallel-finished: true
