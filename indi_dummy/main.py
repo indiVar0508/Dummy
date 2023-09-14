@@ -36,3 +36,7 @@ def depart(name):
     """
     val = random.random()
     print(f"Bye, {name}" if val < 0.4 else f"adiós, {name}" if (val > 0.5) and (val < 0.8) else f"au revoir, {name}")
+
+
+def some_random_method(name):
+    print(name)
