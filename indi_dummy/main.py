@@ -39,4 +39,14 @@ def depart(name):
 
 
 def some_random_method(name):
-    print(name)
+    return name
+
+
+
+def some_random_method2(name):
+    return name
+
+
+
+def some_random_method3(name):
+    return name
